@@ -1,6 +1,8 @@
 import { View, Text, SafeAreaView, StyleSheet, Image} from 'react-native'
 import React from 'react'
 import TripsIndex from '../components/trips/TripsIndex'
+
+
 export default function UpcomingTrips() {
   const bear = require("../assets/app_images/katie_pack_bear_200.png")
   return (

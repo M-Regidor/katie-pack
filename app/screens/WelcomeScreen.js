@@ -9,6 +9,7 @@ function WelcomeScreen({navigation}) {
     const background = require("../assets/app_images/welcome_screen.png")
 
     return (
+        
         <ImageBackground
             source={background}
             style={styles.background}
@@ -17,7 +18,7 @@ function WelcomeScreen({navigation}) {
             <View style={styles.container}>
                 <TouchableOpacity 
                     style={styles.loginButton}
-                    onPress={() => navigation.navigate("Trips")}
+                    onPress={() => navigation.navigate("Packing List")}
                 >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>

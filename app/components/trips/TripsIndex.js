@@ -9,8 +9,11 @@ export default function TripsIndex() {
 
     return (
         <View style={styles.container}>
-            {trips.map((location) => 
-                <TripItem tripName={location}/>
+            {trips.map((location, idx) => 
+                <TripItem 
+                    key={idx} 
+                    tripName={location}
+                />
             )}
         </View>
     )
