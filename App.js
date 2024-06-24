@@ -1,28 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './app/screens/WelcomeScreen';
-import {
-  Dimensions,
-  StyleSheet, 
-  Text, 
-  View, 
-  SafeAreaView, 
-  Image, 
-  Button, 
-  Alert} from 'react-native';
+import UpcomingTrips from './app/screens/UpcomingTrips';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <WelcomeScreen/>
+    <NavigationContainer>
+      <Stack.Navigator 
+        initialRouteName="Login"
+      >
+        <Stack.Screen name="Login" options={{headerShown: false}} component={WelcomeScreen}/>
+        <Stack.Screen name="Trips"  component={UpcomingTrips}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'top',
-//   },
-// });
