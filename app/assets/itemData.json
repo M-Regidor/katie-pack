@@ -1,0 +1,37 @@
+{ 
+    "items": [
+        {
+            "name": "Hairbrush",
+            "packed": false
+        },
+        {
+            "name": "Tooth Brush",
+            "packed": false
+        },
+        {
+            "name": "Tooth Paste",
+            "packed": false
+        },
+        {
+            "name": "Floss",
+            "packed": false
+        },
+        {
+            "name": "Contacts",
+            "packed": false
+        },
+        {
+            "name": "Razor",0.
+            
+            "packed": false
+        },
+        {
+            "name": "Eye drops",
+            "packed": false
+        },
+        {
+            "name": "Hair Straightener",
+            "packed": false
+        }    
+    ]
+}
