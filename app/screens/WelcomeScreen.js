@@ -1,29 +1,39 @@
-import React from 'react';
-import { ImageBackground, StyleSheet, Dimensions, View, TouchableOpacity, Text} from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { storage } from '../../store/mmkv';
 
 // Screen size
 const {width, height} = Dimensions.get("screen")
 
 
 function WelcomeScreen({navigation}) {
-    const background = require("../assets/app_images/welcome_screen.png")
+    const logo = require("../assets/app_images/katie-pack-logo-cropped.png")
+    const [name, setName] = useState(storage.getString("user.name"))
+    
 
     return (
-        
-        <ImageBackground
-            source={background}
-            style={styles.background}
-            resizeMode='stretch'
-        >
+        <SafeAreaView style={styles.background}>
+            <View>
+                <Image source={logo}/>
+            </View>
+            <View style={styles.container}>
+                <View style={styles.welcomeContainer}>
+                    <Text style={styles.inputText}>Welcome!</Text>
+                    <Text style={styles.inputText}>Please enter your name</Text>
+                </View>
+                <TextInput style={styles.input}></TextInput>
+            </View>
             <View style={styles.container}>
                 <TouchableOpacity 
                     style={styles.loginButton}
                     onPress={() => navigation.navigate("Packing List")}
                 >
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={styles.buttonText}>Enter</Text>
                 </TouchableOpacity>
             </View>
-        </ImageBackground>
+        </SafeAreaView>
+
     );
 }
 
@@ -31,12 +41,16 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         flexDirection: "column",
-        justifyContent: "center",
-        // alignItems:"center"
+        justifyContent: "space-evenly",
+        alignItems:"center"
     },
     container: {
-        // justifyContent: "center",
-        alignItems: "center"
+        flex:0.2,
+        // borderWidth: 1,
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "100%"
     },
     loginButton: {
         backgroundColor: "#8fbc8f",
@@ -48,6 +62,20 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 20,
         fontWeight: "bold"
+    },
+    input: {
+        borderRadius: 10,
+        borderWidth: 1,
+        width: "50%",
+        height: 35
+    },
+    inputText: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    welcomeContainer: {
+        flexDirection: "column",
+        alignItems: "center"
     }
 
 })
