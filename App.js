@@ -7,12 +7,14 @@ import PackingList from './app/screens/PackingList';
 import HealthAndBeautyIndex from "./app/components/items/HealthAndBeautyIndex"
 import { useEffect, useState } from 'react';
 import { fetchData } from './app/AsyncStroage';
+import { useUserSettingsStore } from './app/store/userSettingsStore';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [name, setName] = useState("")
-
+  const username = useUserSettingsStore(state => state.username)
+  console.log(username)
   useEffect(()=>{
     fetchData("username", setName)
   },[])
