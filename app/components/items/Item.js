@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     height: 60,
     borderWidth: 1,
     borderRadius: 10,
-    paddingHorizontal: 15
+    paddingHorizontal: 10
   },
   checkBox: {
     borderWidth: 2,

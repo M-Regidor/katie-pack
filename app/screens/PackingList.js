@@ -35,13 +35,9 @@ const styles = StyleSheet.create({
     gap: 20
   },
   listContainer:{
-  },
-  listItem:{
+    flex: 1,
     borderWidth: 1,
-    borderRadius: 10,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-around",
+    paddingTop: 10
   },
   listItemText:{
     fontSize: 20
@@ -50,8 +46,4 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold"
   },
-  iconImage: {
-    height: 150,
-    width: 150
-  }
 })

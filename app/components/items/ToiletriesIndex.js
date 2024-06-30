@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useEffect } from 'react'
 import Item from './Item'
 import useToiletriesStore from '../../store/useToiletriesStore'
@@ -18,7 +18,12 @@ export default function ToiletriesIndex() {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Toiletries</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Toiletries</Text>
+        <TouchableOpacity>
+          <Text style={styles.title}>+</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.listContainer}>
           {items.map((item, idx)=>(
             <Item 
@@ -40,6 +45,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     margin: 10,
     gap: 20
+  },
+  header:{
+    flexDirection: "row",
+    // borderWidth:1,
+    justifyContent: "space-between",
+    width: "100%",
+    paddingRight: 15
   },
   title:{
     fontSize: 25,
