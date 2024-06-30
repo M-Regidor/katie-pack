@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { storage } from '../../store/mmkv';
-
+import { fetchData, getData, storeData } from '../AsyncStroage';
 // Screen size
 const {width, height} = Dimensions.get("screen")
 
 
-function WelcomeScreen({navigation}) {
+function WelcomeScreen({name, setName}) {
     const logo = require("../assets/app_images/katie-pack-logo-cropped.png")
-    const [name, setName] = useState(storage.getString("user.name"))
-    
+
+    const handleEnter = () => {
+        storeData("username", name)
+        fetchData("username", setName)
+    }
+
 
     return (
         <SafeAreaView style={styles.background}>
@@ -22,12 +25,18 @@ function WelcomeScreen({navigation}) {
                     <Text style={styles.inputText}>Welcome!</Text>
                     <Text style={styles.inputText}>Please enter your name</Text>
                 </View>
-                <TextInput style={styles.input}></TextInput>
+                <TextInput 
+                    style={styles.input}
+                    value={name}
+                    onChangeText={(text) => setName(text)}
+                >
+                </TextInput>
             </View>
             <View style={styles.container}>
                 <TouchableOpacity 
                     style={styles.loginButton}
-                    onPress={() => navigation.navigate("Packing List")}
+                    // onPress={() => navigation.navigate("Packing List")}
+                    onPress={handleEnter}
                 >
                     <Text style={styles.buttonText}>Enter</Text>
                 </TouchableOpacity>

@@ -5,19 +5,32 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import UpcomingTrips from './app/screens/UpcomingTrips';
 import PackingList from './app/screens/PackingList';
 import HealthAndBeautyIndex from "./app/components/items/HealthAndBeautyIndex"
+import { useEffect, useState } from 'react';
+import { fetchData } from './app/AsyncStroage';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [name, setName] = useState("")
+
+  useEffect(()=>{
+    fetchData("username", setName)
+  },[name])
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName="Login"
-      >
-        <Stack.Screen name="Login" options={{headerShown: false}} component={WelcomeScreen}/>
-        <Stack.Screen name="Packing List"  options={{headerShown: false}} component={PackingList}/>
-        <Stack.Screen name="Health and Beauty" component={HealthAndBeautyIndex}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    name === null ? 
+    (<WelcomeScreen name={name} setName={setName}/>) : (
+      <NavigationContainer>
+        <Stack.Navigator 
+          initialRouteName="Packing List"
+        >
+          <Stack.Screen name="Packing List"  
+            options={{headerShown: false}} 
+            component={(props) => <PackingList {...props} name={name} setName={setName}/>}
+          />
+          <Stack.Screen name="Health and Beauty" component={HealthAndBeautyIndex}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
   );
 }

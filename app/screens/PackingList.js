@@ -1,11 +1,14 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 
-export default function PackingList({navigation}) {
+export default function PackingList({navigation, name, setName}) {
   const health = require("../assets/app_images/health_and_beauty.png")
 
   return (
       <SafeAreaView style={styles.screen}>
+        <View>
+          <Text>Hello, {name}</Text>
+        </View>
         <Text style={styles.text}>Packing List</Text>
         <View style={styles.listContainer}>
           <TouchableOpacity 
