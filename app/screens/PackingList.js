@@ -19,6 +19,7 @@ export default function PackingList({navigation}) {
   return (
       <SafeAreaView style={styles.screen}>
         <Text style={styles.text}>Packing List</Text>
+        <Button title='Remove username' onPress={handleEnter}/>
         <View style={styles.listContainer}>
           <Category imagePath={toiletries} title={"Toiletries"} navigation={navigation}/>
         </View>

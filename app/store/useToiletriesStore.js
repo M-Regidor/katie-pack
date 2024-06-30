@@ -14,9 +14,12 @@ const useToiletriesStore = create((set) => ({
             ...toiletries
         }
     })),
-    addToiletries: item => set(produce(state => {
+    addToiletry: item => set(produce(state => {
         const id = generateId();
         state.toiletries[id] = {...item, id}
+    })),
+    removeToiletry: id => set(produce(state => {
+        delete state.toiletries[id]
     })),
     getToiletriesArray: (state) => Object.entries(state.toiletries).map(([key, value]) => ({ id:key, ...value })),
     togglePacked: id => set(produce(state => {state.toiletries[id].packed = !state.toiletries[id].packed}))

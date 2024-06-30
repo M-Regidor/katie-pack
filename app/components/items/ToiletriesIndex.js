@@ -8,11 +8,12 @@ import AddNewItem from './AddNewItem'
 export default function ToiletriesIndex() {
   const [modalOpen, setModalOpen] = useState(false)
 
-  const { toiletries, items, togglePacked, addItem } = useToiletriesStore(state => ({
+  const { toiletries, items, togglePacked, addItem, removeItem } = useToiletriesStore(state => ({
     toiletries: state.toiletries,
     items: state.getToiletriesArray(state),
     togglePacked: state.togglePacked,
-    addItem: state.addToiletries
+    addItem: state.addToiletry,
+    removeItem: state.removeToiletry
   }))
   
  
@@ -37,6 +38,7 @@ export default function ToiletriesIndex() {
               name={item.name} 
               packed={item.packed} 
               toggle={togglePacked}
+              removeItem={removeItem}
             />
           ))}
       </View>
