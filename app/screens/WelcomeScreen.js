@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput, Alert} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { fetchData, storeData } from '../AsyncStroage';
+import { storeData, storeObj } from '../store/AsyncStorage';
+import { useAppStore } from '../store/userSettingsStore';
+import items from "../assets/itemData.json"
 
 
 
-function WelcomeScreen({setName}) {
+function WelcomeScreen() {
     const logo = require("../assets/app_images/katie-pack-logo-cropped.png")
     const [newName, setNewName] = useState("")
+    const updateUsername = useAppStore(state => state.updateUsername)
+    // console.log(items.Toiletries[1])
 
     const handleEnter = async () => {
         if (newName === "") {
             Alert.alert("Invalid Input", "Name input can not be blank")
         } else {
-            await storeData("username", newName)
-            fetchData("username", setName)
+            updateUsername(newName)
+            storeData("username", newName)
+            storeObj("toiletries", items.Toiletries)
         }
     }
 

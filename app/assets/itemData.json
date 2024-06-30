@@ -1,37 +1,14 @@
-{ 
-    "items": [
-        {
-            "name": "Hairbrush",
-            "packed": false
-        },
-        {
-            "name": "Tooth Brush",
-            "packed": false
-        },
-        {
-            "name": "Tooth Paste",
-            "packed": false
-        },
-        {
-            "name": "Floss",
-            "packed": false
-        },
-        {
-            "name": "Contacts",
-            "packed": false
-        },
-        {
-            "name": "Razor",0.
-            
-            "packed": false
-        },
-        {
-            "name": "Eye drops",
-            "packed": false
-        },
-        {
-            "name": "Hair Straightener",
-            "packed": false
-        }    
+{
+    "Toiletries": [
+        { "name": "Toothbrush", "packed": false },
+        { "name": "Toothpaste", "packed": false },
+        { "name": "Floss", "packed": false },
+        { "name": "Razor", "packed": false },
+        { "name": "Hairbrush or comb", "packed": false },
+        { "name": "Shampoo", "packed": false },
+        { "name": "Body wash or soap", "packed": false },
+        { "name": "Deodorant", "packed": false },
+        { "name": "Lotion or moisturizer", "packed": false },
+        { "name": "Contact lens solution and case", "packed": false }
     ]
 }

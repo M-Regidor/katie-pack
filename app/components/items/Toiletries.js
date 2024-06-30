@@ -1,25 +1,17 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Item from './Item'
+import useListStore from '../../store/useItemsStore'
 
-export default function HealthAndBeautyIndex() {
-  const items = [
-    "Hairbrush",
-    "Razor",
-    "Contacts",
-    "Tooth Brush",
-    "Tooth Paste",
-    "Floss",
-    "Eye drops",
-    "Hair Straightener"
-  ]
+export default function ToiletriesIndex() {
+  const items = useListStore(state => state.getToiletriesArray(state))
 
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Health and Beauty</Text>
       <View style={styles.listContainer}>
-          {items.map((itemName, idx)=>(
-            <Item key={idx} name={itemName}/>
+          {items.map((item, idx)=>(
+            <Item key={idx} name={item.name}/>
           ))}
       </View>
     </View>

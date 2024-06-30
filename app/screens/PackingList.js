@@ -1,20 +1,24 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, Button} from 'react-native'
 import React from 'react'
-import { fetchData, storeData } from '../AsyncStroage'
+import { storeData } from '../store/AsyncStorage'
+import { useAppStore } from '../store/userSettingsStore'
 
-export default function PackingList({navigation, name, setName}) {
+
+export default function PackingList({navigation}) {
   const health = require("../assets/app_images/health_and_beauty.png")
+  const username = useAppStore(state => state.username)
+  const updateUsername = useAppStore(state => state.updateUsername)
 
-  const handleEnter = async () => {
-    await storeData("username", "")
-    fetchData("username", setName)
+  const handleEnter = () => {
+    updateUsername(null)
+    storeData("username", "")
   }
 
 
   return (
       <SafeAreaView style={styles.screen}>
         <View>
-          <Text>Hello, {name}</Text>
+          <Text>Hello, {username}</Text>
           <Button 
             title='Remove username'
             onPress={handleEnter}
@@ -24,7 +28,7 @@ export default function PackingList({navigation, name, setName}) {
         <View style={styles.listContainer}>
           <TouchableOpacity 
             style={styles.listItem}
-            onPress={()=> navigation.navigate("Health and Beauty")}
+            onPress={()=> navigation.navigate("Toiletries")}
           >
             <Image source={health} ></Image>
             <Text style={styles.listItemText}>Health and Beauty</Text>
