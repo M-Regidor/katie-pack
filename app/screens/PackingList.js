@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, Button} from 'react-native'
 import React from 'react'
 import { storeData } from '../store/AsyncStorage'
-import { useAppStore } from '../store/userSettingsStore'
+import { useAppStore } from '../store/useAppStore'
 import Category from '../components/Category'
 
 

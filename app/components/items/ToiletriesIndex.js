@@ -1,16 +1,21 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import React, { useEffect } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import useToiletriesStore from '../../store/useToiletriesStore'
 import { storeObj } from '../../store/AsyncStorage'
+import AddNewItem from './AddNewItem'
 
 export default function ToiletriesIndex() {
-  const { toiletries, items, togglePacked } = useToiletriesStore(state => ({
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const { toiletries, items, togglePacked, addItem } = useToiletriesStore(state => ({
     toiletries: state.toiletries,
     items: state.getToiletriesArray(state),
-    togglePacked: state.togglePacked
+    togglePacked: state.togglePacked,
+    addItem: state.addToiletries
   }))
   
+ 
   
   useEffect(()=> {
     storeObj("toiletries", toiletries)
@@ -20,7 +25,7 @@ export default function ToiletriesIndex() {
     <View style={styles.screen}>
       <View style={styles.header}>
         <Text style={styles.title}>Toiletries</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setModalOpen(true)}>
           <Text style={styles.title}>+</Text>
         </TouchableOpacity>
       </View>
@@ -35,6 +40,14 @@ export default function ToiletriesIndex() {
             />
           ))}
       </View>
+      <Modal
+        visible={modalOpen}
+        onRequestClose={() => setModalOpen(false)}
+        animationType='fade'
+        transparent={true}
+      >
+        <AddNewItem setModalOpen={setModalOpen} title={"toiletries"} addItem={addItem}/>
+      </Modal>
     </View>
   )
 }

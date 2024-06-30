@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput, Alert} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { storeData, storeObj } from '../store/AsyncStorage';
-import { useAppStore } from '../store/userSettingsStore';
+import { useAppStore } from '../store/useAppStore';
 import items from "../assets/itemData.json"
 
 
