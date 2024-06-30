@@ -2,10 +2,11 @@ import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, Button} 
 import React from 'react'
 import { storeData } from '../store/AsyncStorage'
 import { useAppStore } from '../store/userSettingsStore'
+import Category from '../components/Category'
 
 
 export default function PackingList({navigation}) {
-  const health = require("../assets/app_images/health_and_beauty.png")
+  const toiletries = require("../assets/item_icons/Toiletries.png")
   const username = useAppStore(state => state.username)
   const updateUsername = useAppStore(state => state.updateUsername)
 
@@ -17,22 +18,9 @@ export default function PackingList({navigation}) {
 
   return (
       <SafeAreaView style={styles.screen}>
-        <View>
-          <Text>Hello, {username}</Text>
-          <Button 
-            title='Remove username'
-            onPress={handleEnter}
-          />
-        </View>
         <Text style={styles.text}>Packing List</Text>
         <View style={styles.listContainer}>
-          <TouchableOpacity 
-            style={styles.listItem}
-            onPress={()=> navigation.navigate("Toiletries")}
-          >
-            <Image source={health} ></Image>
-            <Text style={styles.listItemText}>Health and Beauty</Text>
-          </TouchableOpacity>
+          <Category imagePath={toiletries} title={"Toiletries"} navigation={navigation}/>
         </View>
       </SafeAreaView>
     )
@@ -47,14 +35,13 @@ const styles = StyleSheet.create({
     gap: 20
   },
   listContainer:{
-    flex: 1,
   },
   listItem:{
-    flexDirection: "row",
+    borderWidth: 1,
+    borderRadius: 10,
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    borderWidth: 1,
-    borderRadius: 10
   },
   listItemText:{
     fontSize: 20
@@ -62,5 +49,9 @@ const styles = StyleSheet.create({
   text:{
     fontSize: 25,
     fontWeight: "bold"
+  },
+  iconImage: {
+    height: 150,
+    width: 150
   }
 })

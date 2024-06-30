@@ -5,9 +5,12 @@ import useToiletriesStore from '../../store/useToiletriesStore'
 import { storeObj } from '../../store/AsyncStorage'
 
 export default function ToiletriesIndex() {
-  const toiletries = useToiletriesStore(state => state.toiletries)
-  const items = useToiletriesStore(state => state.getToiletriesArray(state))
-  const togglePacked = useToiletriesStore(state => state.togglePacked)
+  const { toiletries, items, togglePacked } = useToiletriesStore(state => ({
+    toiletries: state.toiletries,
+    items: state.getToiletriesArray(state),
+    togglePacked: state.togglePacked
+  }))
+  
   
   useEffect(()=> {
     storeObj("toiletries", toiletries)
@@ -15,7 +18,7 @@ export default function ToiletriesIndex() {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Health and Beauty</Text>
+      <Text style={styles.title}>Toiletries</Text>
       <View style={styles.listContainer}>
           {items.map((item, idx)=>(
             <Item 

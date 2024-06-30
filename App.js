@@ -6,7 +6,7 @@ import PackingList from './app/screens/PackingList';
 import { useEffect,} from 'react';
 import { fetchData, fetchObj, } from './app/store/AsyncStorage';
 import { useAppStore } from './app/store/userSettingsStore';
-import ToiletriesIndex from './app/components/items/Toiletries';
+import ToiletriesIndex from './app/components/items/ToiletriesIndex';
 import useToiletriesStore from './app/store/useToiletriesStore';
 
 const Stack = createNativeStackNavigator();
