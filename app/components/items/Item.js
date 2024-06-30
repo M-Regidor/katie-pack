@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import useToiletriesStore from '../../store/useToiletriesStore'
 
 
-export default function Item({name}) {
-  const [checked, setChecked] = useState(false)
+export default function Item({id, name, packed, toggle}) {
   const handleCheck = () => {
-    setChecked(!checked)
+    toggle(id)
   }
 
   return (
     <View style={styles.listItem}>
       <Text>{name}</Text>
       <TouchableOpacity 
-        style={[styles.checkBox, checked ? styles.checked : null]}
+        style={[styles.checkBox, packed ? styles.checked : null]}
         onPress={handleCheck}
       ></TouchableOpacity>
     </View>

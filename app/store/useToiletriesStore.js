@@ -1,15 +1,16 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
+import { produce }  from "immer";
 
 const useToiletriesStore = create((set) => ({
-    Toiletries: {},
+    toiletries: {},
     setToiletries: toiletries => set(state => ({
-        Toiletries: {
-            ...state.Toiletries,
+        toiletries: {
+            ...state.toiletries,
             ...toiletries
         }
     })),
-    getToiletriesArray: (state) => Object.entries(state.Toiletries).map(([key, value]) => ({ id:key, ...value })),
+    getToiletriesArray: (state) => Object.entries(state.toiletries).map(([key, value]) => ({ id:key, ...value })),
+    togglePacked: id => set(produce(state => {state.toiletries[id].packed = !state.toiletries[id].packed}))
 }))
 
 export default useToiletriesStore
