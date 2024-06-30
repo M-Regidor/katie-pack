@@ -15,19 +15,18 @@ export default function App() {
 
   useEffect(()=>{
     fetchData("username", setName)
-  },[name])
+  },[])
 
   return (
     name === null ? 
-    (<WelcomeScreen name={name} setName={setName}/>) : (
+    (<WelcomeScreen setName={setName}/>) : (
       <NavigationContainer>
         <Stack.Navigator 
           initialRouteName="Packing List"
         >
-          <Stack.Screen name="Packing List"  
-            options={{headerShown: false}} 
-            component={(props) => <PackingList {...props} name={name} setName={setName}/>}
-          />
+          <Stack.Screen name="Packing List" options={{headerShown: false}} >
+            {(props) => <PackingList {...props} name={name} setName={setName}/>}
+          </Stack.Screen>   
           <Stack.Screen name="Health and Beauty" component={HealthAndBeautyIndex}/>
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput} from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput, Alert} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { fetchData, getData, storeData } from '../AsyncStroage';
-// Screen size
-const {width, height} = Dimensions.get("screen")
+import { fetchData, storeData } from '../AsyncStroage';
 
 
-function WelcomeScreen({name, setName}) {
+
+function WelcomeScreen({setName}) {
     const logo = require("../assets/app_images/katie-pack-logo-cropped.png")
+    const [newName, setNewName] = useState("")
 
-    const handleEnter = () => {
-        storeData("username", name)
-        fetchData("username", setName)
+    const handleEnter = async () => {
+        if (newName === "") {
+            Alert.alert("Invalid Input", "Name input can not be blank")
+        } else {
+            await storeData("username", newName)
+            fetchData("username", setName)
+        }
     }
-
 
     return (
         <SafeAreaView style={styles.background}>
@@ -27,15 +30,13 @@ function WelcomeScreen({name, setName}) {
                 </View>
                 <TextInput 
                     style={styles.input}
-                    value={name}
-                    onChangeText={(text) => setName(text)}
-                >
-                </TextInput>
+                    value={newName}
+                    onChangeText={text => setNewName(text)}
+                />
             </View>
             <View style={styles.container}>
                 <TouchableOpacity 
                     style={styles.loginButton}
-                    // onPress={() => navigation.navigate("Packing List")}
                     onPress={handleEnter}
                 >
                     <Text style={styles.buttonText}>Enter</Text>
@@ -73,10 +74,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     input: {
-        borderRadius: 10,
+        borderRadius: 15,
         borderWidth: 1,
-        width: "50%",
-        height: 35
+        width: "55%",
+        height: 35,
+        paddingLeft: 10
     },
     inputText: {
         fontSize: 20,

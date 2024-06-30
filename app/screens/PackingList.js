@@ -1,13 +1,24 @@
-import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity} from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, Button} from 'react-native'
 import React from 'react'
+import { fetchData, storeData } from '../AsyncStroage'
 
 export default function PackingList({navigation, name, setName}) {
   const health = require("../assets/app_images/health_and_beauty.png")
+
+  const handleEnter = async () => {
+    await storeData("username", "")
+    fetchData("username", setName)
+  }
+
 
   return (
       <SafeAreaView style={styles.screen}>
         <View>
           <Text>Hello, {name}</Text>
+          <Button 
+            title='Remove username'
+            onPress={handleEnter}
+          />
         </View>
         <Text style={styles.text}>Packing List</Text>
         <View style={styles.listContainer}>

@@ -23,7 +23,7 @@ export const fetchData = async (key, setValue) => {
     try {
         const data = await getData(key)
         setValue(data)
-        console.log(data)
+        console.log(`username: ${data}`)
 
     } catch (e) {
         console.log(e)
