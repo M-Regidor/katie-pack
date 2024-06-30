@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Item from './Item'
-import useListStore from '../../store/useItemsStore'
+import useToiletriesStore from '../../store/useToiletriesStore'
 
 export default function ToiletriesIndex() {
-  const items = useListStore(state => state.getToiletriesArray(state))
-
+  const items = useToiletriesStore(state => state.getToiletriesArray(state))
+  console.log(items)
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Health and Beauty</Text>

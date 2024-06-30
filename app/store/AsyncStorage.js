@@ -21,7 +21,6 @@ export const storeObj = async (key, value) => {
 export const getData = async (key) => {
     try {
         const value = await AsyncStorage.getItem(key);
-        console.log(value)
         return value
     } catch (e) {
         console.log(e)
@@ -38,3 +37,14 @@ export const fetchData = async (key, setValue) => {
     }
 }
 
+export const fetchObj = async (key, setValue) => {
+    try {
+        const data = await getData(key)
+        if (data != null) {
+            const jsonData = JSON.parse(data)
+            setValue(jsonData)
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}

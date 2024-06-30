@@ -4,21 +4,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import PackingList from './app/screens/PackingList';
 import { useEffect,} from 'react';
-import { fetchData, } from './app/store/AsyncStorage';
+import { fetchData, fetchObj, } from './app/store/AsyncStorage';
 import { useAppStore } from './app/store/userSettingsStore';
-import useListStore from './app/store/useItemsStore';
 import ToiletriesIndex from './app/components/items/Toiletries';
+import useToiletriesStore from './app/store/useToiletriesStore';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const username = useAppStore(state => state.username)
   const setUsername = useAppStore(state => state.updateUsername)
-  const setToiletries = useListStore(state => state.loadLocalToiletries)
+  const setToiletries = useToiletriesStore(state => state.setToiletries)
 
   useEffect(()=>{
     fetchData("username", setUsername)
-    setToiletries()
+    fetchObj("toiletries", setToiletries)
   }, [username])
 
   return (
