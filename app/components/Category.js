@@ -2,13 +2,16 @@ import { Image, TouchableOpacity, Text, StyleSheet, View } from 'react-native'
 import React from 'react'
 
 export default function Category({imagePath, navigation, title, itemList}) {
-    const total = itemList.length
+    let total = 0
     let packed = 0
     let missing = 0
 
-    itemList.forEach(item => {
-        item.packed ? packed ++ : missing ++    
-    });
+    if (itemList) {
+        total = itemList.length
+        itemList.forEach(item => {
+            item.packed ? packed ++ : missing ++    
+        });        
+    }
 
     return (
         <TouchableOpacity onPress={()=> navigation.navigate(title)} style={styles.categoryContainer}>
@@ -39,18 +42,20 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        height: 167,
+        marginTop: 7,
+        height: 160,
         borderRadius: 10,
         backgroundColor: "#d8bfd8"
     },
     iconContainer:{
-        height: 150,
-        width: 150,
+        height: 120,
+        width: 120,
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center"
     },
     listItemText:{
+        textAlign: "center",
         fontSize: 20,
         fontWeight: "bold",
         color: "white"
