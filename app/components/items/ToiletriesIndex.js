@@ -2,23 +2,22 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import useToiletriesStore from '../../store/useToiletriesStore'
-import { storeObj } from '../../store/AsyncStorage'
+import { fetchObj, storeObj } from '../../store/AsyncStorage'
 import AddNewItem from './AddNewItem'
 
 export default function ToiletriesIndex() {
   const [modalOpen, setModalOpen] = useState(false)
 
-  const { toiletries, items, togglePacked, addItem, removeItem } = useToiletriesStore(state => ({
+  const { toiletries, items, togglePacked, addItem, removeItem, setToiletries} = useToiletriesStore(state => ({
     toiletries: state.toiletries,
+    setToiletries: state.setToiletries,
     items: state.getToiletriesArray(state),
     togglePacked: state.togglePacked,
     addItem: state.addToiletry,
     removeItem: state.removeToiletry
   }))
-  
- 
-  
-  useEffect(()=> {
+
+  useEffect(() => {
     storeObj("toiletries", toiletries)
   }, [toiletries])
 

@@ -21,7 +21,10 @@ export const storeObj = async (key, value) => {
 export const getData = async (key) => {
     try {
         const value = await AsyncStorage.getItem(key);
-        return value
+        if (value !== null) {
+            return value
+        }
+
     } catch (e) {
         console.log(e)
     }
@@ -31,7 +34,10 @@ export const getData = async (key) => {
 export const fetchData = async (key, setValue) => {
     try {
         const data = await getData(key)
-        setValue(data)
+        if (data !== null) {
+            setValue(data)
+        }
+        
     } catch (e) {
         console.log(e)
     }

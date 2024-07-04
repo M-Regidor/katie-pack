@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, Button, ScrollView} from 'react-native'
-import React from 'react'
-import { storeData } from '../store/AsyncStorage'
+import React, { useEffect } from 'react'
+import { fetchObj, storeData } from '../store/AsyncStorage'
 import { useAppStore } from '../store/useAppStore'
 import Category from '../components/Category'
 import useToiletriesStore from '../store/useToiletriesStore'
@@ -9,14 +9,20 @@ import useToiletriesStore from '../store/useToiletriesStore'
 export default function PackingList({navigation}) {
   const toiletries = require("../assets/item_icons/Toiletries.png")
   const travelDocs = require("../assets/item_icons/Travel_Documents.png")
+  
   const username = useAppStore(state => state.username)
   const updateUsername = useAppStore(state => state.updateUsername)
   const toiletriesArray = useToiletriesStore(state => state.getToiletriesArray(state))
+  const setToiletries = useToiletriesStore(state => state.setToiletries)
 
   const handleEnter = () => {
     updateUsername(null)
     storeData("username", "")
   }
+  
+  useEffect(() => {
+    fetchObj("toiletries", setToiletries)
+  },[])
 
   return (
       <SafeAreaView style={styles.screen}>

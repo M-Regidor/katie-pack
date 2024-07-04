@@ -12,13 +12,14 @@ import useToiletriesStore from './app/store/useToiletriesStore';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const username = useAppStore(state => state.username)
-  const setUsername = useAppStore(state => state.updateUsername)
-  const setToiletries = useToiletriesStore(state => state.setToiletries)
+  const {username, setUsername} = useAppStore(state => ({
+    username: state.username,
+    setUsername: state.updateUsername
+  }))
+
 
   useEffect(()=>{
     fetchData("username", setUsername)
-    fetchObj("toiletries", setToiletries)
   }, [username])
 
   return (
