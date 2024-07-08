@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
     },
     iconImage: {
         width: "100%",
-        height: "90%"
+        height: "90%",
+        objectFit: "contain"
     },
     countContainer: {
         width: 265,

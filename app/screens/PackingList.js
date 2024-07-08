@@ -9,7 +9,8 @@ import items from "../assets/itemData.json"
 
 export default function PackingList({navigation}) {
   const toiletriesIcon = require("../assets/item_icons/Toiletries.png")
-  const travelDocs = require("../assets/item_icons/Travel_Documents.png")
+  const travelDocsIcon = require("../assets/item_icons/Travel_Documents.png")
+  const clothingIcon = require("../assets/item_icons/Clothing.png")
   
   const username = useAppStore(state => state.username)
   const updateUsername = useAppStore(state => state.updateUsername)
@@ -42,8 +43,14 @@ export default function PackingList({navigation}) {
               navigation={navigation}
               itemList={categories.toiletries}
             />
+             <Category 
+              imagePath={clothingIcon}
+              title={"Clothing"}
+              navigation={navigation}
+              itemList={categories.clothing}
+            />
             <Category 
-              imagePath={travelDocs}
+              imagePath={travelDocsIcon}
               title={"Travel Documents"}
               navigation={navigation}
               itemList={categories.travelDocuments}

@@ -5,10 +5,10 @@ import { storeObj } from '../../store/AsyncStorage'
 import AddNewItem from './AddNewItem'
 import useListItemsStore from '../../store/useListItemsStore'
 
-export default function ItemIndex({category}) {
+export default function ItemIndex({category, title}) {
   const [modalOpen, setModalOpen] = useState(false)
 
-  const title = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();  
+  // const title = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
 
   const {itemList, removeItem, addItem, togglePacked} = useListItemsStore(state => ({
     itemList: state.categories[category],
