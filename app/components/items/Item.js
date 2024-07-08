@@ -2,18 +2,18 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 
 
-export default function Item({id, name, packed, toggle, removeItem}) {
+export default function Item({item, removeItem, category, idx, toggle}) {
   const handleCheck = () => {
-    toggle(id)
+    toggle(category, idx)
   }
 
   return (
     <View style={styles.listItem}>
-      <Text>{name}</Text>
+      <Text>{item.name}</Text>
       <View flexDirection="row" gap={5} >
-        <TouchableOpacity style={styles.deleteBox} onPress={e => removeItem(id)}></TouchableOpacity>
+        <TouchableOpacity style={styles.deleteBox} onPress={e => removeItem(category, idx)}></TouchableOpacity>
         <TouchableOpacity 
-          style={[styles.checkBox, packed ? styles.checked : null]}
+          style={[styles.checkBox, item.packed ? styles.checked : null]}
           onPress={handleCheck}
         ></TouchableOpacity>
       </View>

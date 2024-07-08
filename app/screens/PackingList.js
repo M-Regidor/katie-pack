@@ -4,16 +4,21 @@ import { fetchObj, storeData } from '../store/AsyncStorage'
 import { useAppStore } from '../store/useAppStore'
 import Category from '../components/Category'
 import useToiletriesStore from '../store/useToiletriesStore'
+import useListItemsStore from '../store/useListItemsStore'
 
 
 export default function PackingList({navigation}) {
-  const toiletries = require("../assets/item_icons/Toiletries.png")
+  const toiletriesIcon = require("../assets/item_icons/Toiletries.png")
   const travelDocs = require("../assets/item_icons/Travel_Documents.png")
   
   const username = useAppStore(state => state.username)
   const updateUsername = useAppStore(state => state.updateUsername)
-  const toiletriesArray = useToiletriesStore(state => state.getToiletriesArray(state))
-  const setToiletries = useToiletriesStore(state => state.setToiletries)
+
+  const {categories, setList} = useListItemsStore(state => ({
+      categories: state.categories,
+      setList: state.setList
+  }))
+
 
   const handleEnter = () => {
     updateUsername(null)
@@ -21,7 +26,7 @@ export default function PackingList({navigation}) {
   }
   
   useEffect(() => {
-    fetchObj("toiletries", setToiletries)
+    fetchObj("toiletries", setList)
   },[])
 
   return (
@@ -31,16 +36,16 @@ export default function PackingList({navigation}) {
         <View style={styles.listContainer}>
           <ScrollView>
             <Category 
-              imagePath={toiletries}
+              imagePath={toiletriesIcon}
               title={"Toiletries"}
               navigation={navigation}
-              itemList={toiletriesArray}
+              itemList={categories.toiletries}
             />
-            <Category 
+            {/* <Category 
               imagePath={travelDocs}
               title={"Travel Documents"}
               navigation={navigation}
-            />
+            /> */}
           </ScrollView>
         </View>
       </SafeAreaView>

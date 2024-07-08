@@ -1,24 +1,23 @@
 import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Item from './Item'
-import useToiletriesStore from '../../store/useToiletriesStore'
 import { fetchObj, storeObj } from '../../store/AsyncStorage'
 import AddNewItem from './AddNewItem'
+import useListItemsStore from '../../store/useListItemsStore'
 
 export default function ToiletriesIndex() {
   const [modalOpen, setModalOpen] = useState(false)
+  const category = "toiletries"
 
-  const { toiletries, items, togglePacked, addItem, removeItem, setToiletries} = useToiletriesStore(state => ({
-    toiletries: state.toiletries,
-    setToiletries: state.setToiletries,
-    items: state.getToiletriesArray(state),
-    togglePacked: state.togglePacked,
-    addItem: state.addToiletry,
-    removeItem: state.removeToiletry
+  const {toiletries, removeItem, addItem, togglePacked} = useListItemsStore(state => ({
+    toiletries: state.categories.toiletries,
+    removeItem: state.removeItem,
+    addItem: state.addItem,
+    togglePacked: state.togglePacked
   }))
 
   useEffect(() => {
-    storeObj("toiletries", toiletries)
+    storeObj(category, toiletries)
   }, [toiletries])
 
   return (
@@ -30,14 +29,14 @@ export default function ToiletriesIndex() {
         </TouchableOpacity>
       </View>
       <View style={styles.listContainer}>
-          {items.map((item, idx)=>(
+          {toiletries.map((item, idx)=>(
             <Item 
-              key={idx} 
-              id={item.id}
-              name={item.name} 
-              packed={item.packed} 
-              toggle={togglePacked}
+              key={idx}
+              category={category}
+              item={item}
+              idx={idx}
               removeItem={removeItem}
+              toggle={togglePacked}
             />
           ))}
       </View>
@@ -47,7 +46,7 @@ export default function ToiletriesIndex() {
         animationType='fade'
         transparent={true}
       >
-        <AddNewItem setModalOpen={setModalOpen} title={"toiletries"} addItem={addItem}/>
+        <AddNewItem setModalOpen={setModalOpen} category={category} addItem={addItem}/>
       </Modal>
     </View>
   )

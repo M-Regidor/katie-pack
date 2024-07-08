@@ -5,7 +5,7 @@ export default function Category({imagePath, navigation, title, itemList}) {
     let total = 0
     let packed = 0
     let missing = 0
-
+    
     if (itemList) {
         total = itemList.length
         itemList.forEach(item => {

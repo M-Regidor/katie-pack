@@ -48,7 +48,7 @@ export const fetchObj = async (key, setValue) => {
         const data = await getData(key)
         if (data != null) {
             const jsonData = JSON.parse(data)
-            setValue(jsonData)
+            setValue(key, jsonData)
         }
     } catch (e) {
         console.log(e)

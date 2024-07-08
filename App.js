@@ -7,7 +7,6 @@ import { useEffect,} from 'react';
 import { fetchData, fetchObj, } from './app/store/AsyncStorage';
 import { useAppStore } from './app/store/useAppStore';
 import ToiletriesIndex from './app/components/items/ToiletriesIndex';
-import useToiletriesStore from './app/store/useToiletriesStore';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +19,7 @@ export default function App() {
 
   useEffect(()=>{
     fetchData("username", setUsername)
-  }, [username])
+  }, [])
 
   return (
     username === null ? 

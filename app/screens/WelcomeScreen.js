@@ -11,7 +11,6 @@ function WelcomeScreen() {
     const logo = require("../assets/app_images/katie-pack-logo-cropped.png")
     const [newName, setNewName] = useState("")
     const updateUsername = useAppStore(state => state.updateUsername)
-    // console.log(items.Toiletries[1])
 
     const handleEnter = async () => {
         if (newName === "") {

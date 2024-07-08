@@ -1,15 +1,15 @@
 import { View, Text, StyleSheet, Modal, TouchableOpacity, TextInput, Alert } from 'react-native'
 import React, { useState } from 'react'
 
-export default function AddNewItem({setModalOpen, title, addItem}) {
+export default function AddNewItem({setModalOpen, category, addItem}) {
     const [newItem, setNewItem] = useState("")
 
     const handleAdd = () => {
         if (newItem === "") {
             Alert.alert("Invalid Input", "Item name input can not be blank")
         } else {
-            const itemData = {"name": newItem, "packed": false}
-            addItem(itemData)
+            // const itemData = {"name": newItem, "packed": false}
+            addItem(category, newItem)
             setModalOpen(false)
         }
     }
@@ -18,7 +18,7 @@ export default function AddNewItem({setModalOpen, title, addItem}) {
         <View style={styles.modalContainer}>
             <View style={styles.inputContainer}>
                 <View style={styles.topContainer}>
-                    <Text style={styles.titleText}>Add item to {title} list</Text>
+                    <Text style={styles.titleText}>Add item to {category} list</Text>
                     <TextInput 
                         style={styles.inputText}
                         placeholder='Item Name'
