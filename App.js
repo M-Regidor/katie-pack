@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from './app/screens/WelcomeScreen';
-import PackingList from './app/screens/PackingList';
 import { useEffect,} from 'react';
 import { fetchData, fetchObj, } from './app/store/AsyncStorage';
 import { useAppStore } from './app/store/useAppStore';
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import PackingList from './app/screens/PackingList';
 import ItemIndex from './app/components/items/ItemIndex';
 
 const Stack = createNativeStackNavigator();
@@ -39,7 +39,22 @@ export default function App() {
           </Stack.Screen>
           <Stack.Screen name="Clothing">
             {() => <ItemIndex title={"Clothing"} category={"clothing"}/>}
-          </Stack.Screen> 
+          </Stack.Screen>
+          <Stack.Screen name="Footwear">
+            {() => <ItemIndex title={"Footwear"} category={"footwear"}/>}
+          </Stack.Screen>
+          <Stack.Screen name="Financial">
+            {() => <ItemIndex title={"Financial"} category={"financial"}/>}
+          </Stack.Screen>
+          <Stack.Screen name="Electronics">
+            {() => <ItemIndex title={"Electronics"} category={"electronics"}/>}
+          </Stack.Screen>
+          <Stack.Screen name="Medical Supplies">
+            {() => <ItemIndex title={"Medical Supplies"} category={"medicalSupplies"}/>}
+          </Stack.Screen>
+          <Stack.Screen name="Other">
+            {() => <ItemIndex title={"Other"} category={"other"}/>}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     )

@@ -29,18 +29,20 @@ export default function ItemIndex({category, title}) {
           <Text style={styles.title}>+</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.listContainer}>
-          {itemList.map((item, idx)=>(
-            <Item 
-              key={idx}
-              category={category}
-              item={item}
-              idx={idx}
-              removeItem={removeItem}
-              toggle={togglePacked}
-            />
-          ))}
-      </ScrollView>
+      {itemList.length === 0 ? <Text>{title} list is empty</Text> : 
+        <ScrollView style={styles.listContainer}>
+            {itemList.map((item, idx)=>(
+              <Item 
+                key={idx}
+                category={category}
+                item={item}
+                idx={idx}
+                removeItem={removeItem}
+                toggle={togglePacked}
+              />
+            ))}
+        </ScrollView>
+      }
       <Modal
         visible={modalOpen}
         onRequestClose={() => setModalOpen(false)}
@@ -57,6 +59,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: "column",
+    alignItems: "center",
     margin: 10,
     gap: 20
   },
@@ -72,7 +75,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   listContainer:{
-    flex: 1,
-    gap: 5
+    width: "100%"
   },
 })

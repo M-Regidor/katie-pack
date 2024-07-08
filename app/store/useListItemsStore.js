@@ -4,13 +4,13 @@ import { produce } from "immer";
 const useListItemsStore = create((set) => ({
     categories: {
         toiletries: [],
-        travelDocuments: [],
         clothing: [],
         footwear: [],
-        medicalSupplies: [],
         electronics: [],
-        miscellaneous: [],
-        financial: []
+        travelDocuments: [],
+        financial: [],
+        medicalSupplies: [],
+        other: []
     },
     setList: (category, list) => set(state => ({
         categories: produce(state.categories, draft => {

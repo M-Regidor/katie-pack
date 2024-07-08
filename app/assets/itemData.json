@@ -34,7 +34,6 @@
         { "name": "Sneakers", "packed": false },
         { "name": "Hiking boots", "packed": false }
     ],
-
     "medicalSupplies": [
         { "name": "Prescription medications", "packed": false },
         { "name": "Pain relievers", "packed": false },
@@ -57,13 +56,5 @@
         { "name": "Travel money belt", "packed": false },
         { "name": "Foreign currency exchange receipt", "packed": false },
         { "name": "Prepaid travel card", "packed": false }
-    ],
-
-    "miscellaneous": [
-        { "name": "Travel pillow", "packed": false },
-        { "name": "Eye mask and earplugs", "packed": false },
-        { "name": "Reusable water bottle", "packed": false },
-        { "name": "Snacks", "packed": false },
-        { "name": "Travel guidebook or map", "packed": false }
     ]
 }

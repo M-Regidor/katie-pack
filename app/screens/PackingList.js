@@ -11,7 +11,12 @@ export default function PackingList({navigation}) {
   const toiletriesIcon = require("../assets/item_icons/Toiletries.png")
   const travelDocsIcon = require("../assets/item_icons/Travel_Documents.png")
   const clothingIcon = require("../assets/item_icons/Clothing.png")
-  
+  const footwearIcon = require("../assets/item_icons/footwear.png")
+  const financialIcon = require("../assets/item_icons/financial.png")
+  const electronicsIcon = require("../assets/item_icons/electronics.png")
+  const medicalSuppliesIcon = require("../assets/item_icons/Medical_Supplies.png")
+  const otherIcon = require("../assets/item_icons/other.png")
+
   const username = useAppStore(state => state.username)
   const updateUsername = useAppStore(state => state.updateUsername)
 
@@ -43,17 +48,47 @@ export default function PackingList({navigation}) {
               navigation={navigation}
               itemList={categories.toiletries}
             />
-             <Category 
+            <Category 
               imagePath={clothingIcon}
               title={"Clothing"}
               navigation={navigation}
               itemList={categories.clothing}
             />
             <Category 
+              imagePath={footwearIcon}
+              title={"Footwear"}
+              navigation={navigation}
+              itemList={categories.footwear}
+            />
+            <Category 
+              imagePath={financialIcon}
+              title={"Financial"}
+              navigation={navigation}
+              itemList={categories.financial}
+            />
+            <Category 
+              imagePath={electronicsIcon}
+              title={"Electronics"}
+              navigation={navigation}
+              itemList={categories.electronics}
+            />
+            <Category 
+              imagePath={medicalSuppliesIcon}
+              title={"Medical Supplies"}
+              navigation={navigation}
+              itemList={categories.medicalSupplies}
+            />
+            <Category 
               imagePath={travelDocsIcon}
               title={"Travel Documents"}
               navigation={navigation}
               itemList={categories.travelDocuments}
+            />
+            <Category 
+              imagePath={otherIcon}
+              title={"Other"}
+              navigation={navigation}
+              itemList={categories.other}
             />
           </ScrollView>
         </View>
