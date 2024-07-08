@@ -1,35 +1,36 @@
 import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Item from '../components/items/Item'
-import { fetchObj, storeObj } from '../store/AsyncStorage'
-import AddNewItem from '../components/items/AddNewItem'
-import useListItemsStore from '../store/useListItemsStore'
+import Item from './Item'
+import { storeObj } from '../../store/AsyncStorage'
+import AddNewItem from './AddNewItem'
+import useListItemsStore from '../../store/useListItemsStore'
 
-export default function ToiletriesIndex() {
+export default function ItemIndex({category}) {
   const [modalOpen, setModalOpen] = useState(false)
-  const category = "toiletries"
 
-  const {toiletries, removeItem, addItem, togglePacked} = useListItemsStore(state => ({
-    toiletries: state.categories.toiletries,
+  const title = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();  
+
+  const {itemList, removeItem, addItem, togglePacked} = useListItemsStore(state => ({
+    itemList: state.categories[category],
     removeItem: state.removeItem,
     addItem: state.addItem,
     togglePacked: state.togglePacked
   }))
 
   useEffect(() => {
-    storeObj(category, toiletries)
-  }, [toiletries])
+    storeObj(category, itemList)
+  }, [itemList])
 
   return (
     <View style={styles.screen}>
       <View style={styles.header}>
-        <Text style={styles.title}>Toiletries</Text>
+        <Text style={styles.title}>{title}</Text>
         <TouchableOpacity onPress={() => setModalOpen(true)}>
           <Text style={styles.title}>+</Text>
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.listContainer}>
-          {toiletries.map((item, idx)=>(
+          {itemList.map((item, idx)=>(
             <Item 
               key={idx}
               category={category}
