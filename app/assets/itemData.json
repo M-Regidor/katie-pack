@@ -1,8 +1,8 @@
 {
-    "Toiletries": [
+    "toiletries": [
         { "name": "Toothbrush", "packed": false },
         { "name": "Toothpaste", "packed": false },
-        { "name": "Floss", "packed": false },
+        { "name": "Sunscreen", "packed": false },
         { "name": "Razor", "packed": false },
         { "name": "Hairbrush or comb", "packed": false },
         { "name": "Shampoo", "packed": false },
@@ -10,5 +10,60 @@
         { "name": "Deodorant", "packed": false },
         { "name": "Lotion or moisturizer", "packed": false },
         { "name": "Contact lens solution and case", "packed": false }
+    ],
+
+    "travelDocuments": [
+        { "name": "Passport", "packed": false },
+        { "name": "Visa", "packed": false },
+        { "name": "Driver's license", "packed": false },
+        { "name": "Travel insurance documents", "packed": false },
+        { "name": "Boarding passes", "packed": false }
+      ],
+
+    "clothing": [
+        { "name": "Underwear", "packed": false },
+        { "name": "Socks", "packed": false },
+        { "name": "T-shirts", "packed": false },
+        { "name": "Casual pants/shorts", "packed": false },
+        { "name": "Jacket or coat", "packed": false }
+    ],
+    "footwear": [
+        { "name": "Comfortable walking shoes", "packed": false },
+        { "name": "Sandals or flip-flops", "packed": false },
+        { "name": "Dress shoes", "packed": false },
+        { "name": "Sneakers", "packed": false },
+        { "name": "Hiking boots", "packed": false }
+    ],
+
+    "medicalSupplies": [
+        { "name": "Prescription medications", "packed": false },
+        { "name": "Pain relievers", "packed": false },
+        { "name": "First aid kit", "packed": false },
+        { "name": "Hand sanitizer", "packed": false },
+        { "name": "Motion sickness medication", "packed": false }
+    ],
+
+    "electronics": [
+        { "name": "Smartphone", "packed": false },
+        { "name": "Charger and cables", "packed": false },
+        { "name": "Portable power bank", "packed": false },
+        { "name": "Headphones or earphones", "packed": false },
+        { "name": "Laptop or tablet", "packed": false }
+    ],
+
+    "financial": [
+        { "name": "Credit/debit cards", "packed": false },
+        { "name": "Cash (local and home currency)", "packed": false },
+        { "name": "Travel money belt", "packed": false },
+        { "name": "Foreign currency exchange receipt", "packed": false },
+        { "name": "Prepaid travel card", "packed": false }
+    ],
+
+    "miscellaneous": [
+        { "name": "Travel pillow", "packed": false },
+        { "name": "Eye mask and earplugs", "packed": false },
+        { "name": "Reusable water bottle", "packed": false },
+        { "name": "Snacks", "packed": false },
+        { "name": "Travel guidebook or map", "packed": false }
     ]
 }

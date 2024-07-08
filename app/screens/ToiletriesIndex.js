@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Item from './Item'
-import { fetchObj, storeObj } from '../../store/AsyncStorage'
-import AddNewItem from './AddNewItem'
-import useListItemsStore from '../../store/useListItemsStore'
+import Item from '../components/items/Item'
+import { fetchObj, storeObj } from '../store/AsyncStorage'
+import AddNewItem from '../components/items/AddNewItem'
+import useListItemsStore from '../store/useListItemsStore'
 
 export default function ToiletriesIndex() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -28,7 +28,7 @@ export default function ToiletriesIndex() {
           <Text style={styles.title}>+</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.listContainer}>
+      <ScrollView style={styles.listContainer}>
           {toiletries.map((item, idx)=>(
             <Item 
               key={idx}
@@ -39,7 +39,7 @@ export default function ToiletriesIndex() {
               toggle={togglePacked}
             />
           ))}
-      </View>
+      </ScrollView>
       <Modal
         visible={modalOpen}
         onRequestClose={() => setModalOpen(false)}

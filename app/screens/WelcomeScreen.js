@@ -18,7 +18,10 @@ function WelcomeScreen() {
         } else {
             updateUsername(newName)
             storeData("username", newName)
-            storeObj("toiletries", items.Toiletries)
+            const categories = Object.keys(items)
+            for (const category of categories) {
+                storeObj(category, items[category])
+            }
         }
     }
 

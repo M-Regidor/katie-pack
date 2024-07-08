@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import { fetchObj, storeData } from '../store/AsyncStorage'
 import { useAppStore } from '../store/useAppStore'
 import Category from '../components/Category'
-import useToiletriesStore from '../store/useToiletriesStore'
 import useListItemsStore from '../store/useListItemsStore'
+import items from "../assets/itemData.json"
 
 
 export default function PackingList({navigation}) {
@@ -26,8 +26,9 @@ export default function PackingList({navigation}) {
   }
   
   useEffect(() => {
-    fetchObj("toiletries", setList)
-  },[])
+    const categories = Object.keys(items)
+    categories.forEach(category => fetchObj(category, setList))
+  }, [])
 
   return (
       <SafeAreaView style={styles.screen}>
@@ -41,11 +42,12 @@ export default function PackingList({navigation}) {
               navigation={navigation}
               itemList={categories.toiletries}
             />
-            {/* <Category 
+            <Category 
               imagePath={travelDocs}
               title={"Travel Documents"}
               navigation={navigation}
-            /> */}
+              itemList={categories.travelDocuments}
+            />
           </ScrollView>
         </View>
       </SafeAreaView>
