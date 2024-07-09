@@ -1,10 +1,13 @@
-import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, Button, ScrollView, ActivityIndicator} from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, ScrollView, ActivityIndicator} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { fetchObj, storeData } from '../store/AsyncStorage'
 import { useAppStore } from '../store/useAppStore'
 import Category from '../components/Category'
 import useListItemsStore from '../store/useListItemsStore'
-import items from "../assets/itemData.json"
+import { ScreenContext } from 'react-native-screens'
+import ScreenHeader from '../components/ScreenHeader'
+
+
 
 const toiletriesIcon = require("../assets/item_icons/Toiletries.png")
 const travelDocsIcon = require("../assets/item_icons/Travel_Documents.png")
@@ -62,16 +65,7 @@ export default function PackingList({navigation}) {
 
     return [...red, ...yellow, ...green]
   }
-  
-  
-  
-  const handleEnter = () => {
-    updateUsername(null)
-    storeData("username", "")
-  }
-  
-  
-  
+
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -87,8 +81,7 @@ export default function PackingList({navigation}) {
   if (!isLoading) {
     return (
         <SafeAreaView style={styles.screen}>
-          <Text style={styles.text}>{username}'s Packing List</Text>
-          <Button title='Remove username' onPress={handleEnter}/>
+          <ScreenHeader username={username}/>
           <View style={styles.listContainer}>
             {isLoading ? <ActivityIndicator size={"large"}/> : 
              <ScrollView>
@@ -123,13 +116,8 @@ const styles = StyleSheet.create({
   },
   listContainer:{
     flex: 1,
-    // gap: 7
   },
   listItemText:{
     fontSize: 20
-  },
-  text:{
-    fontSize: 25,
-    fontWeight: "bold"
   },
 })

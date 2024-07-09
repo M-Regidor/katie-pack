@@ -31,28 +31,28 @@ export default function App() {
           <Stack.Screen name="Packing List" options={{headerShown: false}} >
             {(props) => <PackingList {...props}/>}
           </Stack.Screen>
-          <Stack.Screen name="Toiletries">
+          <Stack.Screen name="Toiletries" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Toiletries"} category={"toiletries"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Travel Documents">
+          <Stack.Screen name="Travel Documents" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Travel Documents"} category={"travelDocuments"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Clothing">
+          <Stack.Screen name="Clothing" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Clothing"} category={"clothing"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Footwear">
+          <Stack.Screen name="Footwear" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Footwear"} category={"footwear"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Financial">
+          <Stack.Screen name="Financial" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Financial"} category={"financial"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Electronics">
+          <Stack.Screen name="Electronics" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Electronics"} category={"electronics"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Medical Supplies">
+          <Stack.Screen name="Medical Supplies" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Medical Supplies"} category={"medicalSupplies"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Other">
+          <Stack.Screen name="Other" options={{headerBackTitleVisible: false}}>
             {() => <ItemIndex title={"Other"} category={"other"}/>}
           </Stack.Screen>
         </Stack.Navigator>

@@ -4,7 +4,6 @@ import Item from './Item'
 import { storeObj } from '../../store/AsyncStorage'
 import AddNewItem from './AddNewItem'
 import useListItemsStore from '../../store/useListItemsStore'
-import { useAppStore } from '../../store/useAppStore'
 
 
 export default function ItemIndex({category, title}) {

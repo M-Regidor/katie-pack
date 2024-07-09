@@ -2,6 +2,7 @@ import { Image, TouchableOpacity, Text, StyleSheet, View } from 'react-native'
 import React from 'react'
 
 export default function Category({imagePath, navigation, title, total, missing, packed}) {
+    const listStats = total === 0 ? "List empty" : `${packed} / ${total}`
 
     if (packed === total){
         bgColor = "#689F38"
@@ -19,7 +20,7 @@ export default function Category({imagePath, navigation, title, total, missing, 
             </View>
             <View style={styles.countContainer}>
                 <View style={styles.countDetails}>
-                    <Text style={styles.countNum}>{packed} / {total}</Text>
+                    <Text style={styles.countNum}>{listStats}</Text>
                     <Text style={styles.countText}>Packed</Text>
                 </View>
             </View>
@@ -34,20 +35,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 7,
         height: 150,
-        borderRadius: 10,
-        // padding: 5
-        // backgroundColor: "#d8bfd8"
+        borderRadius: 25,
     },
     iconContainer:{
+        flex: 1,
         height: 110,
-        width: 120,
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center"
     },
     listItemText:{
-        textAlign: "center",
         fontSize: 20,
+        textAlign: "center",
         fontWeight: "bold",
         color: "white"
     },
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
         objectFit: "contain"
     },
     countContainer: {
-        width: 230,
+        flex: 1,
         flexDirection: "row",
         justifyContent: "space-evenly"
     },
