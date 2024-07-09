@@ -1,21 +1,11 @@
 import { Image, TouchableOpacity, Text, StyleSheet, View } from 'react-native'
 import React from 'react'
 
-export default function Category({imagePath, navigation, title, itemList}) {
-    let total = 0
-    let packed = 0
-    let missing = 0
-    
-    if (itemList) {
-        total = itemList.length
-        itemList.forEach(item => {
-            item.packed ? packed ++ : missing ++    
-        });        
-    }
+export default function Category({imagePath, navigation, title, total, missing, packed}) {
 
     if (packed === total){
         bgColor = "#689F38"
-    } else if (packed > missing) {
+    } else if (packed >= missing) {
         bgColor = "#F9A825"
     } else if (packed < missing) {
         bgColor = "#F44336"

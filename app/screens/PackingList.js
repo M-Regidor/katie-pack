@@ -16,14 +16,14 @@ const medicalSuppliesIcon = require("../assets/item_icons/Medical_Supplies.png")
 const otherIcon = require("../assets/item_icons/other.png")
 
 const categoriesData = [
-  { title: "Toiletries", icon: toiletriesIcon, backgroundColor: "#F44336", key: "toiletries",},
-  { title: "Clothing", icon: clothingIcon, backgroundColor: "#9CCC65", key: "clothing" },
-  { title: "Footwear", icon: footwearIcon, backgroundColor: "#FFD740", key: "footwear" },
-  { title: "Financial", icon: financialIcon, backgroundColor: "#757575", key: "financial" },
-  { title: "Electronics", icon: electronicsIcon, backgroundColor: "thistle", key: "electronics" },
-  { title: "Medical Supplies", icon: medicalSuppliesIcon, backgroundColor: "#AED581", key: "medicalSupplies" },
-  { title: "Travel Documents", icon: travelDocsIcon, backgroundColor: "thistle", key: "travelDocuments" },
-  { title: "Other", icon: otherIcon, backgroundColor: "#AED581", key: "other" },
+  { title: "Toiletries", icon: toiletriesIcon, key: "toiletries",},
+  { title: "Clothing", icon: clothingIcon,  key: "clothing" },
+  { title: "Footwear", icon: footwearIcon, key: "footwear" },
+  { title: "Financial", icon: financialIcon, key: "financial" },
+  { title: "Electronics", icon: electronicsIcon, key: "electronics" },
+  { title: "Medical Supplies", icon: medicalSuppliesIcon, key: "medicalSupplies" },
+  { title: "Travel Documents", icon: travelDocsIcon, key: "travelDocuments" },
+  { title: "Other", icon: otherIcon, key: "other" },
 ];
 
 export default function PackingList({navigation}) {
@@ -37,7 +37,7 @@ export default function PackingList({navigation}) {
 
 
   
-  const sorted = () => {
+  const sortCategories = () => {
     const red = []
     const yellow = []
     const green = []
@@ -52,11 +52,11 @@ export default function PackingList({navigation}) {
       })
       
       if (packed === total) {
-        green.push(category)
+        green.push({...category, total, packed, missing})
       } else if (packed >= missing) {
-        yellow.push(category)
+        yellow.push({...category, total, packed, missing})
       } else if (packed < missing) {
-        red.push(category)
+        red.push({...category, total, packed, missing})
       }
     })
 
@@ -71,7 +71,7 @@ export default function PackingList({navigation}) {
   }
   
   
-  const sortedCategories = sorted()
+  
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -83,7 +83,6 @@ export default function PackingList({navigation}) {
     loadCategories()
   }, [])
 
-
   
   if (!isLoading) {
     return (
@@ -93,14 +92,15 @@ export default function PackingList({navigation}) {
           <View style={styles.listContainer}>
             {isLoading ? <ActivityIndicator size={"large"}/> : 
              <ScrollView>
-                {sortedCategories.map(({title, icon, backgroundColor, key}) => (
+                {sortCategories().map(({title, icon, key, total, missing, packed}) => (
                   <Category
                     key={key}
                     title={title}
-                    backgroundColor={backgroundColor}
                     imagePath={icon}
                     navigation={navigation}
-                    itemList={categories[key]}
+                    total={total}
+                    missing={missing}
+                    packed={packed}
                   />
                 ))}
               </ScrollView>
