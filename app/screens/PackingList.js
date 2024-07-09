@@ -16,33 +16,63 @@ const medicalSuppliesIcon = require("../assets/item_icons/Medical_Supplies.png")
 const otherIcon = require("../assets/item_icons/other.png")
 
 const categoriesData = [
-  { title: "Toiletries", icon: toiletriesIcon, backgroundColor: "#d8bfd8", key: "toiletries" },
-  { title: "Clothing", icon: clothingIcon, backgroundColor: "#696969", key: "clothing" },
-  { title: "Footwear", icon: footwearIcon, backgroundColor: "#FFD700", key: "footwear" },
-  { title: "Financial", icon: financialIcon, backgroundColor: "#4682B4", key: "financial" },
-  { title: "Electronics", icon: electronicsIcon, backgroundColor: "#F08080", key: "electronics" },
-  { title: "Medical Supplies", icon: medicalSuppliesIcon, backgroundColor: "#FF69B4", key: "medicalSupplies" },
-  { title: "Travel Documents", icon: travelDocsIcon, backgroundColor: "#8B008B", key: "travelDocuments" },
-  { title: "Other", icon: otherIcon, backgroundColor: "#8FBC8F", key: "other" },
+  { title: "Toiletries", icon: toiletriesIcon, backgroundColor: "#F44336", key: "toiletries",},
+  { title: "Clothing", icon: clothingIcon, backgroundColor: "#9CCC65", key: "clothing" },
+  { title: "Footwear", icon: footwearIcon, backgroundColor: "#FFD740", key: "footwear" },
+  { title: "Financial", icon: financialIcon, backgroundColor: "#757575", key: "financial" },
+  { title: "Electronics", icon: electronicsIcon, backgroundColor: "thistle", key: "electronics" },
+  { title: "Medical Supplies", icon: medicalSuppliesIcon, backgroundColor: "#AED581", key: "medicalSupplies" },
+  { title: "Travel Documents", icon: travelDocsIcon, backgroundColor: "thistle", key: "travelDocuments" },
+  { title: "Other", icon: otherIcon, backgroundColor: "#AED581", key: "other" },
 ];
 
 export default function PackingList({navigation}) {
   const [isLoading, setIsLoading] = useState(true)
-
+  const {categories, setList} = useListItemsStore(state => ({
+    categories: state.categories,
+    setList: state.setList
+  }))
   const username = useAppStore(state => state.username)
   const updateUsername = useAppStore(state => state.updateUsername)
 
-  const {categories, setList} = useListItemsStore(state => ({
-      categories: state.categories,
-      setList: state.setList
-  }))
 
+  
+  const sorted = () => {
+    const red = []
+    const yellow = []
+    const green = []
 
+    categoriesData.map((category) => {
+      const total = categories[category.key].length
+      let packed = 0;
+      let missing = 0;
+      
+      categories[category.key].forEach(item => {
+        item.packed ? packed++ : missing++
+      })
+      
+      if (packed === total) {
+        green.push(category)
+      } else if (packed >= missing) {
+        yellow.push(category)
+      } else if (packed < missing) {
+        red.push(category)
+      }
+    })
+
+    return [...red, ...yellow, ...green]
+  }
+  
+  
+  
   const handleEnter = () => {
     updateUsername(null)
     storeData("username", "")
   }
   
+  
+  const sortedCategories = sorted()
+
   useEffect(() => {
     const loadCategories = async () => {
       const categoryKeys = Object.keys(categories)
@@ -53,6 +83,8 @@ export default function PackingList({navigation}) {
     loadCategories()
   }, [])
 
+
+  
   if (!isLoading) {
     return (
         <SafeAreaView style={styles.screen}>
@@ -61,7 +93,7 @@ export default function PackingList({navigation}) {
           <View style={styles.listContainer}>
             {isLoading ? <ActivityIndicator size={"large"}/> : 
              <ScrollView>
-                {categoriesData.map(({title, icon, backgroundColor, key}) => (
+                {sortedCategories.map(({title, icon, backgroundColor, key}) => (
                   <Category
                     key={key}
                     title={title}

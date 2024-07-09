@@ -1,7 +1,7 @@
 import { Image, TouchableOpacity, Text, StyleSheet, View } from 'react-native'
 import React from 'react'
 
-export default function Category({imagePath, navigation, title, itemList, backgroundColor}) {
+export default function Category({imagePath, navigation, title, itemList}) {
     let total = 0
     let packed = 0
     let missing = 0
@@ -13,24 +13,24 @@ export default function Category({imagePath, navigation, title, itemList, backgr
         });        
     }
 
+    if (packed === total){
+        bgColor = "#689F38"
+    } else if (packed > missing) {
+        bgColor = "#F9A825"
+    } else if (packed < missing) {
+        bgColor = "#F44336"
+    }
+
     return (
-        <TouchableOpacity onPress={()=> navigation.navigate(title)} style={[styles.categoryContainer, {backgroundColor}]}>
+        <TouchableOpacity onPress={()=> navigation.navigate(title)} style={[styles.categoryContainer, {backgroundColor: bgColor}]}>
             <View style={styles.iconContainer}>
                 <Image source={imagePath} style={styles.iconImage}/>
                 <Text style={styles.listItemText}>{title}</Text>
             </View>
             <View style={styles.countContainer}>
                 <View style={styles.countDetails}>
-                    <Text style={styles.countNum}>{packed}</Text>
+                    <Text style={styles.countNum}>{packed} / {total}</Text>
                     <Text style={styles.countText}>Packed</Text>
-                </View>
-                <View style={styles.countDetails}>
-                    <Text style={styles.countNum}>{missing}</Text>
-                    <Text style={styles.countText}>Missing</Text>
-                </View>
-                <View style={styles.countDetails}>
-                    <Text style={styles.countNum}>{total}</Text>
-                    <Text style={styles.countText}>Total</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -40,12 +40,12 @@ export default function Category({imagePath, navigation, title, itemList, backgr
 const styles = StyleSheet.create({
     categoryContainer:{
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         alignItems: "center",
         marginTop: 7,
         height: 150,
         borderRadius: 10,
-        padding: 5
+        // padding: 5
         // backgroundColor: "#d8bfd8"
     },
     iconContainer:{
@@ -67,12 +67,13 @@ const styles = StyleSheet.create({
         objectFit: "contain"
     },
     countContainer: {
-        width: 265,
+        width: 230,
         flexDirection: "row",
         justifyContent: "space-evenly"
     },
     countDetails: {
         alignItems: "center",
+        gap: 10
     },
     countText: {
         fontSize: 20,
