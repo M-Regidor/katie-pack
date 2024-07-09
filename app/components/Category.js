@@ -1,7 +1,7 @@
 import { Image, TouchableOpacity, Text, StyleSheet, View } from 'react-native'
 import React from 'react'
 
-export default function Category({imagePath, navigation, title, itemList}) {
+export default function Category({imagePath, navigation, title, itemList, backgroundColor}) {
     let total = 0
     let packed = 0
     let missing = 0
@@ -14,7 +14,7 @@ export default function Category({imagePath, navigation, title, itemList}) {
     }
 
     return (
-        <TouchableOpacity onPress={()=> navigation.navigate(title)} style={styles.categoryContainer}>
+        <TouchableOpacity onPress={()=> navigation.navigate(title)} style={[styles.categoryContainer, {backgroundColor}]}>
             <View style={styles.iconContainer}>
                 <Image source={imagePath} style={styles.iconImage}/>
                 <Text style={styles.listItemText}>{title}</Text>
@@ -43,12 +43,13 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         marginTop: 7,
-        height: 160,
+        height: 150,
         borderRadius: 10,
-        backgroundColor: "#d8bfd8"
+        padding: 5
+        // backgroundColor: "#d8bfd8"
     },
     iconContainer:{
-        height: 120,
+        height: 110,
         width: 120,
         flexDirection: "column",
         alignItems: "center",
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     },
     iconImage: {
         width: "100%",
-        height: "90%",
+        height: "80%",
         objectFit: "contain"
     },
     countContainer: {
