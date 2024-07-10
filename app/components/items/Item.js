@@ -11,11 +11,6 @@ export default function Item({item, removeItem, category, idx, toggle}) {
     toggle(category, idx)
   }
 
-  const handleImageLoad = () => {
-    // console.log(`Image for item ${item.name} loaded`);
-    setIsLoading(false)
-  }
-
   return (
     <LinearGradient
       colors={['rgba(255, 255, 255, 0.7)', 'rgba(255, 255, 255, 0.30)']}

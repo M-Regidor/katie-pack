@@ -21,6 +21,7 @@ export default function ItemIndex({category, title}) {
     } else {
       addItem(category, newItemName)
       setNewItemName("")
+      Keyboard.dismiss()
     }
   }
 
@@ -84,8 +85,10 @@ export default function ItemIndex({category, title}) {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.newInputBox}
-                onChangeText={text => setNewItemName(text)}
                 value={newItemName}
+                placeholder='Add new item'
+                placeholderTextColor={"rgba(0, 0, 0, 0.5)"}
+                onChangeText={text => setNewItemName(text)}
               />
               <TouchableOpacity style={styles.addButton} onPress={handleNewItem}>
                 <FontAwesomeIcon icon={faPlus} size={20}/> 
