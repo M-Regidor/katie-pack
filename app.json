@@ -30,6 +30,12 @@
         "projectId": "ced15140-512c-4508-a29b-f5fdd5601cd1"
       }
     },
-    "owner": "matthew-regidor"
+    "owner": "matthew-regidor",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ced15140-512c-4508-a29b-f5fdd5601cd1"
+    }
   }
 }
