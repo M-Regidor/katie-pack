@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView, ActivityIn
 import React, { useEffect, useRef, useState } from 'react'
 import Item from './Item'
 import { storeObj } from '../../store/AsyncStorage'
-import AddNewItem from './AddNewItem'
 import useListItemsStore from '../../store/useListItemsStore'
 import { LinearGradient } from 'expo-linear-gradient'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -93,14 +92,6 @@ export default function ItemIndex({category, title}) {
               </TouchableOpacity>
             </View>
           </View>
-          <Modal
-            visible={modalOpen}
-            onRequestClose={() => setModalOpen(false)}
-            animationType='fade'
-            transparent={true}
-          >
-            <AddNewItem setModalOpen={setModalOpen} category={category} addItem={addItem}/>
-          </Modal>
         </KeyboardAvoidingView>
       </LinearGradient>
     </TouchableWithoutFeedback>
