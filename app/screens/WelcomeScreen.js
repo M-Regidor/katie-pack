@@ -48,7 +48,6 @@ function WelcomeScreen() {
                     </View>
                     <View style={styles.inputContainer}>
                         <View>
-                            {/* <Text style={{paddingLeft: 10, marginBottom: 5}}>Username</Text> */}
                             <TextInput 
                                 style={styles.input}
                                 placeholder='Create a username'
@@ -97,7 +96,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     inputContainer: {
-        // borderWidth: 1,
         width: "100%",
         height: 225,
         flexDirection: "column",

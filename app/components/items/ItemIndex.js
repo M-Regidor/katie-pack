@@ -9,9 +9,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function ItemIndex({category, title}) {
-  const [modalOpen, setModalOpen] = useState(false)
   const [newItemName, setNewItemName] = useState("")
-  const [keyboardVisible, setKeyboardVisible] = useState(false);
   const [inputMargin, setInputMargin] = useState(50)
 
 
@@ -69,7 +67,7 @@ export default function ItemIndex({category, title}) {
         >
         <ScrollView style={styles.listContainer}>
             { itemList.length === 0 ? 
-              <Text>{title} list is empty</Text> 
+              <Text>List empty</Text> 
             :
               itemList.map((item, idx)=>(
                 <Item 
@@ -131,7 +129,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingTop: 10,
-    // position: "absolute"
   },
   inputContainer: {
     flexDirection: "row",

@@ -31,15 +31,12 @@ const categoriesData = [
 
 export default function PackingList({navigation}) {
   const [isLoading, setIsLoading] = useState(true)
+  const username = useAppStore(state => state.username)
   const {categories, setList} = useListItemsStore(state => ({
     categories: state.categories,
     setList: state.setList
   }))
-  const username = useAppStore(state => state.username)
-  const updateUsername = useAppStore(state => state.updateUsername)
-
-
-  
+   
   const sortCategories = () => {
     const red = []
     const yellow = []
