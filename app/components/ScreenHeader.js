@@ -4,6 +4,7 @@ import { faBars, faUser, faList, faHandPeace } from '@fortawesome/free-solid-svg
 import React, { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { removeItem, storeData } from '../store/AsyncStorage'
+import useListItemsStore from '../store/useListItemsStore'
 
 export default function ScreenHeader({username, listTitle}) {
   const [modalOpen, setModalOpen] = useState(false)
@@ -11,6 +12,7 @@ export default function ScreenHeader({username, listTitle}) {
   const [inputText, setInputText] = useState("")
 
   const changeUsername = useAppStore(state => state.updateUsername)
+  const resetList = useListItemsStore(state => state.resetPackStatus)
   const title = username ? `${username}'s Packing list` : listTitle
 
   const handleSubmit = () => {
@@ -83,7 +85,7 @@ export default function ScreenHeader({username, listTitle}) {
                     <Text >Change username</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => resetList()}>
                   <View style={styles.buttonIcon}><FontAwesomeIcon icon={faList}/></View>
                   <View style={styles.buttonText}><Text>Reset all lists</Text></View>
                 </TouchableOpacity>
