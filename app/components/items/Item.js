@@ -4,6 +4,7 @@ import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { useState } from 'react'
 import { useAppStore } from '../../store/useAppStore'
+import { LinearGradient } from 'expo-linear-gradient'
 
 // const checked = require("../../assets/app_images/checked.png")
 // const unchecked = require("../../assets/app_images/unchecked.png")
@@ -28,7 +29,10 @@ export default function Item({item, removeItem, category, idx, toggle}) {
   }
 
   return (
-    <View style={styles.listItem}>
+    <LinearGradient
+      colors={['rgba(255, 255, 255, 0.7)', 'rgba(255, 255, 255, 0.30)']}
+      style={styles.listItem}
+    >
         <TouchableOpacity 
           style={styles.checkBox}
           onPress={handleCheck}
@@ -42,7 +46,7 @@ export default function Item({item, removeItem, category, idx, toggle}) {
         <TouchableOpacity onPress={() => removeItem(category, idx)}>
           <FontAwesomeIcon icon={faTrashCan} size={23}/>
         </TouchableOpacity>
-    </View>
+    </LinearGradient>
   )
 }
 
@@ -51,11 +55,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 7,
+    marginBottom: 15,
     height: 60,
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 10
+    borderRadius: 25,
+    paddingHorizontal: 15
   },
   checkBox: {
     flexDirection: "row",

@@ -43,7 +43,6 @@
     ],
 
     "electronics": [
-        { "name": "Smartphone", "packed": false },
         { "name": "Charger and cables", "packed": false },
         { "name": "Portable power bank", "packed": false },
         { "name": "Headphones or earphones", "packed": false },
@@ -53,8 +52,8 @@
     "financial": [
         { "name": "Credit/debit cards", "packed": false },
         { "name": "Cash (local and home currency)", "packed": false },
-        { "name": "Travel money belt", "packed": false },
         { "name": "Foreign currency exchange receipt", "packed": false },
         { "name": "Prepaid travel card", "packed": false }
-    ]
+    ],
+    "other": []
 }

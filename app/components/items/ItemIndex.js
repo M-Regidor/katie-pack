@@ -4,6 +4,7 @@ import Item from './Item'
 import { storeObj } from '../../store/AsyncStorage'
 import AddNewItem from './AddNewItem'
 import useListItemsStore from '../../store/useListItemsStore'
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 export default function ItemIndex({category, title}) {
@@ -31,7 +32,11 @@ export default function ItemIndex({category, title}) {
     )
   } else {
     return (
-      <View style={styles.screen}>
+      <LinearGradient
+      
+        colors={["#524F81", "#B6B5D8"]}
+        style={styles.screen}
+      >
         <View style={styles.header}>
           <Text style={styles.title}>{title}</Text>
           <TouchableOpacity onPress={() => setModalOpen(true)}>
@@ -60,7 +65,7 @@ export default function ItemIndex({category, title}) {
         >
           <AddNewItem setModalOpen={setModalOpen} category={category} addItem={addItem}/>
         </Modal>
-      </View>
+      </LinearGradient>
     )
   }
 }
@@ -68,28 +73,27 @@ export default function ItemIndex({category, title}) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    margin: 10,
-    gap: 20
   },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    
   },
   header:{
     flexDirection: "row",
-    // borderWidth:1,
+    alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    paddingRight: 15
+    height: 70,
+    paddingHorizontal: 25
   },
   title:{
     fontSize: 25,
     fontWeight: "bold"
   },
   listContainer:{
-    width: "100%"
+    // width: "100%",
+    marginHorizontal: 15,
   },
 })

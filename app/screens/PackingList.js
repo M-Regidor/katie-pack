@@ -6,7 +6,7 @@ import Category from '../components/Category'
 import useListItemsStore from '../store/useListItemsStore'
 import { ScreenContext } from 'react-native-screens'
 import ScreenHeader from '../components/ScreenHeader'
-
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 const toiletriesIcon = require("../assets/item_icons/Toiletries.png")
@@ -81,24 +81,29 @@ export default function PackingList({navigation}) {
   if (!isLoading) {
     return (
         <SafeAreaView style={styles.screen}>
-          <ScreenHeader username={username}/>
-          <View style={styles.listContainer}>
-            {isLoading ? <ActivityIndicator size={"large"}/> : 
-             <ScrollView>
-                {sortCategories().map(({title, icon, key, total, missing, packed}) => (
-                  <Category
-                    key={key}
-                    title={title}
-                    imagePath={icon}
-                    navigation={navigation}
-                    total={total}
-                    missing={missing}
-                    packed={packed}
-                  />
-                ))}
-              </ScrollView>
-            }
-          </View>
+          <LinearGradient
+            colors={["#524F81", "#B6B5D8"]}
+            style={styles.screen}
+          >
+            <ScreenHeader username={username}/>
+            <View style={styles.listContainer}>
+              {isLoading ? <ActivityIndicator size={"large"}/> : 
+              <ScrollView>
+                  {sortCategories().map(({title, icon, key, total, missing, packed}) => (
+                    <Category
+                      key={key}
+                      title={title}
+                      imagePath={icon}
+                      navigation={navigation}
+                      total={total}
+                      missing={missing}
+                      packed={packed}
+                    />
+                  ))}
+                </ScrollView>
+              }
+            </View>
+          </LinearGradient>
         </SafeAreaView>
       )
   } else {
@@ -110,11 +115,11 @@ export default function PackingList({navigation}) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    flexDirection: "column",
-    margin: 10,
-    gap: 20
+    backgroundColor: "#524F81",
+    marginBottom: -20,
   },
   listContainer:{
+    marginHorizontal: 15,
     flex: 1,
   },
   listItemText:{

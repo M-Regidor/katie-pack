@@ -111,8 +111,8 @@ export default function ScreenHeader({username, listTitle}) {
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
-    paddingHorizontal: 10,
-    height: 40,
+    paddingHorizontal: 20,
+    height: 100,
     alignItems: "center",
     justifyContent: "space-between"
   },

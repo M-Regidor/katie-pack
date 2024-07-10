@@ -31,32 +31,43 @@ export default function App() {
           <Stack.Screen name="Packing List" options={{headerShown: false}} >
             {(props) => <PackingList {...props}/>}
           </Stack.Screen>
-          <Stack.Screen name="Toiletries" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Toiletries" 
+            options={headerOptions}>
             {() => <ItemIndex title={"Toiletries"} category={"toiletries"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Travel Documents" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Travel Documents" options={headerOptions}>
             {() => <ItemIndex title={"Travel Documents"} category={"travelDocuments"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Clothing" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Clothing" options={headerOptions}>
             {() => <ItemIndex title={"Clothing"} category={"clothing"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Footwear" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Footwear" options={headerOptions}>
             {() => <ItemIndex title={"Footwear"} category={"footwear"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Financial" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Financial" options={headerOptions}>
             {() => <ItemIndex title={"Financial"} category={"financial"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Electronics" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Electronics" options={headerOptions}>
             {() => <ItemIndex title={"Electronics"} category={"electronics"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Medical Supplies" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Medical Supplies" options={headerOptions}>
             {() => <ItemIndex title={"Medical Supplies"} category={"medicalSupplies"}/>}
           </Stack.Screen>
-          <Stack.Screen name="Other" options={{headerBackTitleVisible: false}}>
+          <Stack.Screen name="Other" options={headerOptions}>
             {() => <ItemIndex title={"Other"} category={"other"}/>}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     )
   );
+}
+
+const headerOptions = {
+  headerBackTitleVisible: false,
+    headerStyle: {
+      backgroundColor: "#524F81", 
+      borderBottomWidth: 0,
+      shadowOpacity: 0,
+      elevation: 0
+  }
 }
