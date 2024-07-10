@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, TextInput, Alert, Switch} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image, StyleSheet, View, TouchableOpacity, Text, TextInput, Alert, Switch, Keyboard} from 'react-native';
 import { removeItem, storeData, storeObj } from '../store/AsyncStorage';
 import { useAppStore } from '../store/useAppStore';
 import items from "../assets/itemData.json"
@@ -21,6 +20,7 @@ function WelcomeScreen() {
             updateUsername(newName)
             storeData("username", newName)
             const categories = Object.keys(items)
+            Keyboard.dismiss()
             
             if (usePreset) {
                 for (const category of categories) {
@@ -88,8 +88,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#FFC107",
-        // borderWidth: 1,
-        // borderColor: "rgba(0, 0, 0, 0.5)",
         borderRadius: 25,
         height: 45
     },

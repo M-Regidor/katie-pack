@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-// import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan, faCircleCheck, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'

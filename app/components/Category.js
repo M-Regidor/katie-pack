@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     },
     iconContainer:{
         flex: 1,
-        // height: "100%",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center"
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: "center",
         fontWeight: "bold",
-        // color: "#757575"
     },
     iconImage: {
         width: "100%",

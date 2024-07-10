@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView, ActivityIndicator, TextInput, Alert, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native'
+import React, { useEffect,useState } from 'react'
 import Item from './Item'
 import { storeObj } from '../../store/AsyncStorage'
 import useListItemsStore from '../../store/useListItemsStore'
@@ -60,27 +60,29 @@ export default function ItemIndex({category, title}) {
         colors={["#524F81", "#B6B5D8"]}
         style={styles.screen}
       >
+        <View style={styles.header}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
         <KeyboardAvoidingView 
-          style={{flex: 1}}
+          style={styles.container}
           keyboardVerticalOffset={500}
         >
-          <View style={styles.header}>
-            <Text style={styles.title}>{title}</Text>
-          </View>
-          {itemList.length === 0 ? <Text>{title} list is empty</Text> : 
-            <ScrollView style={styles.listContainer}>
-                {itemList.map((item, idx)=>(
-                  <Item 
-                    key={idx}
-                    category={category}
-                    item={item}
-                    idx={idx}
-                    removeItem={removeItem}
-                    toggle={togglePacked}
-                  />
-                ))}
-            </ScrollView>
-          }
+        <ScrollView style={styles.listContainer}>
+            { itemList.length === 0 ? 
+              <Text>{title} list is empty</Text> 
+            :
+              itemList.map((item, idx)=>(
+                <Item 
+                  key={idx}
+                  category={category}
+                  item={item}
+                  idx={idx}
+                  removeItem={removeItem}
+                  toggle={togglePacked}
+                />
+              ))
+            }
+          </ScrollView>
           <View style={[styles.newItemContainer, {marginBottom: inputMargin}]}>
             <View style={styles.inputContainer}>
               <TextInput
@@ -105,11 +107,9 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  loadingContainer: {
+  container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    
   },
   header:{
     flexDirection: "row",
@@ -131,8 +131,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingTop: 10,
-    // marginBottom: 50,
-    // backgroundColor: "rgba(255, 255, 255, 0)"
+    // position: "absolute"
   },
   inputContainer: {
     flexDirection: "row",

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faUser, faList, faHandPeace } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { removeItem, storeData } from '../store/AsyncStorage'
+import { removeItem } from '../store/AsyncStorage'
 import useListItemsStore from '../store/useListItemsStore'
 
 export default function ScreenHeader({username, listTitle}) {
