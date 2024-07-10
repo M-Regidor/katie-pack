@@ -1,24 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 // import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faTrashCan, faCircleCheck, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import { useState } from 'react'
-import { useAppStore } from '../../store/useAppStore'
 import { LinearGradient } from 'expo-linear-gradient'
 
-// const checked = require("../../assets/app_images/checked.png")
-// const unchecked = require("../../assets/app_images/unchecked.png")
 
 
 export default function Item({item, removeItem, category, idx, toggle}) {
-  const {checked, unchecked, setIsLoading} = useAppStore(state => ({
-    checked: state.checked,
-    unchecked: state.unchecked,
-    setIsLoading: state.setLoading
-  }))
-
-  // setIsLoading(true)
-
   const handleCheck = () => {
     toggle(category, idx)
   }
@@ -37,14 +25,11 @@ export default function Item({item, removeItem, category, idx, toggle}) {
           style={styles.checkBox}
           onPress={handleCheck}
         > 
-          <Image 
-            source={item.packed ? checked : unchecked} 
-            style={styles.checkIcon} 
-            onLoad={handleImageLoad}/>
+          <FontAwesomeIcon icon={item.packed ? faCircleCheck : faCircleXmark} size={30}/>
           <Text style={styles.itemText}>{item.name}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => removeItem(category, idx)}>
-          <FontAwesomeIcon icon={faTrashCan} size={23}/>
+          <FontAwesomeIcon icon={faTrashCan} size={20}/>
         </TouchableOpacity>
     </LinearGradient>
   )
@@ -63,7 +48,6 @@ const styles = StyleSheet.create({
   checkBox: {
     flexDirection: "row",
     alignItems: "center",
-    // borderWidth: 1,
     gap: 15,
     height: "100%",
     width: "90%"

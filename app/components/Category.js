@@ -90,6 +90,5 @@ const styles = StyleSheet.create({
     countNum: {
         fontSize: 25,
         fontWeight: "bold",
-        color: bgColor
     }
 })
