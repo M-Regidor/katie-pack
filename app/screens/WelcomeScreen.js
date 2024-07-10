@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { removeItem, storeData, storeObj } from '../store/AsyncStorage';
 import { useAppStore } from '../store/useAppStore';
 import items from "../assets/itemData.json"
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -34,51 +35,53 @@ function WelcomeScreen() {
     }
 
     return (
-        <SafeAreaView style={styles.background}>
-            <View style={{flex: 1, justifyContent: "center"}}>
-                <Image source={logo}/>
-            </View>
-            <View style={styles.container}>
-                <View style={{alignItems: "center"}}>
-                    <Text style={{fontSize: 30, fontWeight:'bold'}}>Welcome!</Text>
+            <LinearGradient
+                colors={["#524F81", "#B6B5D8"]}
+                style={styles.background}
+            >
+                <View style={{flex: 1, justifyContent: "center"}}>
+                    <Image source={logo}/>
                 </View>
-                <View style={styles.inputContainer}>
-                    <View>
-                        <Text style={{paddingLeft: 5, marginBottom: 5}}>Username</Text>
-                        <TextInput 
-                            style={styles.input}
-                            placeholder='Create a username'
-                            value={newName}
-                            onChangeText={text => setNewName(text)}
-                        />
+                <View style={styles.container}>
+                    <View style={{alignItems: "center"}}>
+                        <Text style={{fontSize: 30, fontWeight:'bold'}}>Welcome!</Text>
                     </View>
-                    <View style={styles.presetContainer}>
-                        <Text style={styles.inputText}>Preset packing list</Text>
-                        <Switch
-                            value={usePreset}
-                            onValueChange={() => setUsePreset(!usePreset)}
-                        />
+                    <View style={styles.inputContainer}>
+                        <View>
+                            {/* <Text style={{paddingLeft: 10, marginBottom: 5}}>Username</Text> */}
+                            <TextInput 
+                                style={styles.input}
+                                placeholder='Create a username'
+                                placeholderTextColor={'rgba(0, 0, 0, 0.8)'}
+                                value={newName}
+                                onChangeText={text => setNewName(text)}
+                            />
+                        </View>
+                        <View style={styles.presetContainer}>
+                            <Text style={styles.inputText}>Preset packing list</Text>
+                            <Switch
+                                value={usePreset}
+                                onValueChange={() => setUsePreset(!usePreset)}
+                            />
+                        </View>
+                        <TouchableOpacity style={styles.loginButton} onPress={handleEnter}>
+                            <Text style={styles.buttonText}>Get Started</Text>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.loginButton} onPress={handleEnter}>
-                        <Text style={styles.buttonText}>Get Started</Text>
-                    </TouchableOpacity>
                 </View>
-            </View>
-        </SafeAreaView>
-
+            </LinearGradient>
     );
 }
 
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        flexDirection: "column",
-        alignItems:"center"
+        alignItems:"center",
+        backgroundColor: "#524F81",
     },
     container: {
         flex: 1,
         flexDirection: "column",
-        // borderWidth: 1,
         width: "65%"
     },
     loginButton: {
@@ -89,14 +92,14 @@ const styles = StyleSheet.create({
         height: 50
     },
     buttonText: {
-        color: "#fff",
+        color: "black",
         fontSize: 20,
         fontWeight: "bold"
     },
     inputContainer: {
         // borderWidth: 1,
         width: "100%",
-        height: 250,
+        height: 225,
         flexDirection: "column",
         justifyContent: "space-evenly",
     },
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         // width: "50%",
         height: 35,
-        paddingLeft: 10
+        paddingLeft: 15
     },
     inputText: {
         fontSize: 15,
