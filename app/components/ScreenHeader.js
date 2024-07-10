@@ -47,13 +47,13 @@ export default function ScreenHeader({username, listTitle}) {
               style={[styles.button, {width: "45%", justifyContent: "center", height: 40}]}
               onPress={() => setInputOpen(false)}
               >
-              <Text>Back</Text>
+              <Text style={styles.buttonText}>Back</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               style={[styles.button, {width: "45%", justifyContent: "center", height: 40}]}
               onPress={handleSubmit}
               >
-              <Text>Submit</Text>
+              <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View>
         </>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "grey",
+    backgroundColor: "#524F81",
     // gap: 10,
     borderRadius: 25,
     height: 300,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: 'space-evenly',
-    backgroundColor: "grey",
+    backgroundColor: "#524F81",
     gap: 5,
     padding: 10,
     width: 250,
