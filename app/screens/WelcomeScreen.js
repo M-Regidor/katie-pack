@@ -52,7 +52,7 @@ function WelcomeScreen() {
                             <TextInput 
                                 style={styles.input}
                                 placeholder='Create a username'
-                                placeholderTextColor={'rgba(0, 0, 0, 0.8)'}
+                                placeholderTextColor={'rgba(0, 0, 0, 0.7)'}
                                 value={newName}
                                 onChangeText={text => setNewName(text)}
                             />
@@ -87,9 +87,11 @@ const styles = StyleSheet.create({
     loginButton: {
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#8fbc8f",
+        backgroundColor: "#FFC107",
+        // borderWidth: 1,
+        // borderColor: "rgba(0, 0, 0, 0.5)",
         borderRadius: 25,
-        height: 50
+        height: 45
     },
     buttonText: {
         color: "black",
@@ -106,8 +108,9 @@ const styles = StyleSheet.create({
     input: {
         borderRadius: 25,
         borderWidth: 1,
-        // width: "50%",
-        height: 35,
+        borderColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        height: 45,
         paddingLeft: 15
     },
     inputText: {
@@ -117,7 +120,8 @@ const styles = StyleSheet.create({
     presetContainer: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        paddingHorizontal: 2
     }
 })
 

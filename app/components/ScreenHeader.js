@@ -81,23 +81,23 @@ export default function ScreenHeader({username, listTitle}) {
                   <View style={styles.buttonIcon}>
                     <FontAwesomeIcon  icon={faUser}/>
                   </View>
-                  <View style={styles.buttonText}>
-                    <Text >Change username</Text>
-                  </View>
+                  <Text style={styles.buttonText}>Change username</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => resetList()}>
-                  <View style={styles.buttonIcon}><FontAwesomeIcon icon={faList}/></View>
-                  <View style={styles.buttonText}><Text>Reset all lists</Text></View>
+                  <View style={styles.buttonIcon}>
+                    <FontAwesomeIcon icon={faList}/>
+                  </View>
+                  <Text style={styles.buttonText}>Reset all lists</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={handleAppReset}>
                   <View style={styles.buttonIcon}><FontAwesomeIcon icon={faHandPeace}/></View>
-                  <View style={styles.buttonText}><Text>Reset app</Text></View>
+                  <Text style={styles.buttonText}>Reset app</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
                   style={[styles.button, {width: "50%", justifyContent: "center"}]}
                   onPress={()=> setModalOpen(false)}
                   >
-                  <Text>Close</Text>
+                  <Text style={styles.buttonText}>Close</Text>
                 </TouchableOpacity>
                 </>
               }
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
     borderRadius: 25
   },
   buttonText: {
-    // alignItems: "center",
-    width: "60%"
+    fontSize: 13,
+    fontWeight: "bold",
   },
   buttonIcon: {
     alignItems: "center",
