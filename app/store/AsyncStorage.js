@@ -18,6 +18,14 @@ export const storeObj = async (key, value) => {
     }
 }
 
+export const removeItem = async (key) => {
+    try {
+        await AsyncStorage.removeItem(key)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export const getData = async (key) => {
     try {
         const value = await AsyncStorage.getItem(key);
@@ -49,6 +57,8 @@ export const fetchObj = async (key, setValue) => {
         if (data != null) {
             const jsonData = JSON.parse(data)
             setValue(key, jsonData)
+        } else {
+            setValue(key, [])
         }
     } catch (e) {
         console.log(e)

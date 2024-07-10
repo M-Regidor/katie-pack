@@ -22,7 +22,7 @@ export default function App() {
   }, [])
 
   return (
-    username === null ? 
+    !username ? 
     (<WelcomeScreen />) : (
       <NavigationContainer>
         <Stack.Navigator 

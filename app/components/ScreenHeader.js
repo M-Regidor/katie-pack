@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faUser, faList, faHandPeace } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 import { useAppStore } from '../store/useAppStore'
-import { storeData } from '../store/AsyncStorage'
+import { removeItem, storeData } from '../store/AsyncStorage'
 
 export default function ScreenHeader({username, listTitle}) {
   const [modalOpen, setModalOpen] = useState(false)
@@ -26,7 +26,7 @@ export default function ScreenHeader({username, listTitle}) {
 
   const handleAppReset = () => {
     changeUsername(null)
-    storeData("username", "")
+    removeItem("username")
   }
   
   const newUsernameInput = () => {
