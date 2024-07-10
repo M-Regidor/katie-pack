@@ -24,6 +24,12 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ced15140-512c-4508-a29b-f5fdd5601cd1"
+      }
+    },
+    "owner": "matthew-regidor"
   }
 }
