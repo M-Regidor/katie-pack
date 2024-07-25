@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faTrashCan, faCircleCheck, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+import { faTrashCan, faCircle as circleUnpacked } from '@fortawesome/free-regular-svg-icons'
+import { faCircle as circlePacked } from '@fortawesome/free-solid-svg-icons'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
@@ -19,7 +20,7 @@ export default function Item({item, removeItem, category, idx, toggle}) {
           style={styles.checkBox}
           onPress={handleCheck}
         > 
-          <FontAwesomeIcon icon={item.packed ? faCircleCheck : faCircleXmark} size={30}/>
+          <FontAwesomeIcon icon={item.packed ? circlePacked : circleUnpacked} size={30}/>
           <Text style={styles.itemText}>{item.name}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => removeItem(category, idx)}>
